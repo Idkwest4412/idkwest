@@ -1,7 +1,38 @@
 {% extends "base.html" %}
 {% block title %}Events - Idk Cave{% endblock %}
 {% block content %}
-<h2>Events</h2>
-<p>We host monthly events like game nights, movie streams, ect. Join our Discord to participate!</p>
+<h2 data-aos="fade-up">Events</h2>
+<p>We host monthly events like game nights, movie streams, and group jorks! Join our Discord to participate!</p>
+
+<section id="countdown" data-aos="zoom-in" style="margin-top:2rem; font-size:1.5rem; text-align:center;">
+  <div>Next Event Starts In:</div>
+  <div id="timer" style="font-weight:700; font-size:2rem; margin-top:0.5rem;"></div>
+</section>
+
+<script>
+  const eventDate = new Date("2025-07-15T20:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff < 0) {
+      document.getElementById("timer").innerHTML = "Event is live or has passed!";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("timer").innerHTML =
+      `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  const interval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
 {% endblock %}
 
