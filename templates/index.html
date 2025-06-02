@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Home - Idk Cave{% endblock %}
 {% block content %}
-<h2 data-aos="fade-up">Welcome to Idk Cave</h2>
-<p data-aos="fade-up" data-aos-delay="100">This is the official website for our Discord server!</p>
+<h2 data-aos="fade-up" id="typing-text"></h2>
 
-<section id="stats" data-aos="fade-up" data-aos-delay="200">
-  <h3>Server Stats</h3>
-  <ul>
-    <li>Total Members: <strong>512</strong></li>
-    <li>Online Now: <strong>120</strong></li>
-  </ul>
-</section>
-
+<script>
+  const txt = "Welcome to Idk Cave - A Discord server like no other...";
+  let i = 0;
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("typing-text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, 80);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", typeWriter);
+</script>
 <a href="https://discord.gg/HxzCtdvDdg" class="discord-button" target="_blank" data-aos="zoom-in" data-aos-delay="300">Join Our Discord</a>
 {% endblock %}
 
