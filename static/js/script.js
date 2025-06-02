@@ -43,3 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+const cursor = document.getElementById("custom-cursor");
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+document.querySelectorAll("a, button").forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
+    cursor.style.backgroundColor = "rgba(114, 137, 218, 0.3)";
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    cursor.style.backgroundColor = "transparent";
+  });
+});
+
